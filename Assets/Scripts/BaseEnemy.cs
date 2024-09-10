@@ -19,5 +19,6 @@ public class BaseEnemy : Actor, IInitializable, IUpdatable
     void IUpdatable.ActorUpdate()
     {
         Debug.Log("update " + prefabName);
+        newObj.transform.position += new Vector3(0.01f, 0.01f, 0.01f);
     } 
 }
