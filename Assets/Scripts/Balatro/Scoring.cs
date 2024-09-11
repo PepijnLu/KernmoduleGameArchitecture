@@ -77,6 +77,8 @@ public class Scoring
         {
             baseChips += card.chips; 
             baseMult += card.mult;
+
+            Debug.Log($"Scored card: {card.rank} of {card.suit}");
         }
 
         baseChips += pokerHand.chips;

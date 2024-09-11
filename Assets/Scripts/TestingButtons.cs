@@ -69,8 +69,8 @@ public class TestingButtons : MonoBehaviour
             }
         }
 
-        balatro.scoring.Score(balatro.playedHand);
+        int newScore = balatro.scoring.Score(balatro.playedHand);
         handText.text = TestData.handName;
-        scoreText.text = TestData.score.ToString();
+        scoreText.text = newScore.ToString();
     }
 }

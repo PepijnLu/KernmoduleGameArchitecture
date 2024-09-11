@@ -34,28 +34,36 @@ public class PossiblePokerHand
     public bool IsFlush(List<PokerCard> playedHand)
     {
         string prevSuit = playedHand[0].suit;
-        foreach(PokerCard card in playedHand.Skip(1))
+        if(playedHand.Count == 5)
         {
-            if(card.suit == prevSuit) {prevSuit = card.suit;}
-            else{return false;}
+            foreach(PokerCard card in playedHand.Skip(1))
+            {
+                if(card.suit == prevSuit) {prevSuit = card.suit;}
+                else{return false;}
+            }
+            
+            return true;
         }
-        
-        return true;
+        return false;
     }
 
     public bool IsStraight(int[] values)
     {
-        Array.Sort(values);
-        
-        for (int i = 0; i < values.Length - 1; i++)
+        if(values.Length == 5)
         {
-            if (values[i] + 1 != values[i + 1]) {return false;}
+            Array.Sort(values);
+
+            // Special case for Ace-low straights (Ace, 2, 3, 4, 5)
+            if (values.SequenceEqual(new List<int> { 2, 3, 4, 5, 14 })) {return true;}
+
+            for (int i = 0; i < values.Length - 1; i++)
+            {
+                if (values[i] + 1 != values[i + 1]) {return false;}
+            }
+            
+            return true;
         }
-
-        // Special case for Ace-low straights (Ace, 2, 3, 4, 5)
-        if (values.SequenceEqual(new List<int> { 2, 3, 4, 5, 14 })) {return true;}
-
-        return true;
+        return false;
     }
 
     public virtual PossiblePokerHand IsThisHand(List<PokerCard> playedHand)

@@ -5,8 +5,6 @@ using TMPro;
 /*
 BUGS:
 -SCORE KEEPS ADDING TO ITSELF WHEN SAME HAND TWICE IN A ROW
--NO LOW STRAIGHTS WITH ACE
--0 IN TESTING DOESNT ALWAYS WORK PROPERLY (RANDOM STRAIGHTS/FLUSHES?)
 -
 */
 public struct PokerCard
@@ -57,6 +55,7 @@ public class Balatro : MonoBehaviour
         else {newCard.chips = rank;}
 
         playedHand.Add(newCard);
+        Debug.Log($"Card submitted: {newCard.rank} of {newCard.suit}");
     }
 
 
