@@ -1,7 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
+/*
+BUGS:
+-SCORE KEEPS ADDING TO ITSELF WHEN SAME HAND TWICE IN A ROW
+-NO LOW STRAIGHTS WITH ACE
+-0 IN TESTING DOESNT ALWAYS WORK PROPERLY (RANDOM STRAIGHTS/FLUSHES?)
+-
+*/
 public struct PokerCard
 {
     public int rank;
@@ -14,9 +21,11 @@ public class Balatro : MonoBehaviour
     //TESTING PURPOSES
     public List<int> values;
     public List<string> suits;
+    public List<int> rankIndex, suitIndex;
 
-    public List<PokerCard> playedHand;
-    Scoring scoring = new Scoring();
+    public List<PokerCard> playedHand = new List<PokerCard>();
+    public TextMeshProUGUI handText, scoreText;
+    public Scoring scoring = new Scoring();
     int totalScore;
 
 
@@ -31,23 +40,14 @@ public class Balatro : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            playedHand = new List<PokerCard>();
-            //TESTING TESTING TESTING
-            for(int i = 0; i < values.Count; i++)
+            foreach(var card in playedHand)
             {
-                InitializePlayedHand(values[i], suits[i]);
+                Debug.Log($"Card value: {card.rank}, card suit: {card.suit}");
             }
-
-            //5 for testing
-            totalScore += scoring.Score(playedHand);
-
-            playedHand = null;
-
-            //Debug.Log(totalScore);
         }
     }
 
-    void InitializePlayedHand(int rank, string suit)
+    public void InitializePlayedHand(int rank, string suit)
     {
         PokerCard newCard = new PokerCard();
         newCard.rank = rank;
