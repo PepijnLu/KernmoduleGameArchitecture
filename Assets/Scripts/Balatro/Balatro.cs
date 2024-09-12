@@ -51,7 +51,8 @@ public class Balatro : MonoBehaviour
         newCard.rank = rank;
         newCard.suit = suit;
         
-        if(rank > 10) {newCard.chips = 10;}
+        if(rank == 14) {newCard.chips = 11;}
+        else if(rank > 10) {newCard.chips = 10;}
         else {newCard.chips = rank;}
 
         playedHand.Add(newCard);

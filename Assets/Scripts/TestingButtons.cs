@@ -65,7 +65,7 @@ public class TestingButtons : MonoBehaviour
             if(val != 0)
             {
                 balatro.InitializePlayedHand(val, suitTexts[i].text);
-                // Debug.Log($"Card value: {val}, card suit: {suitTexts[i].text}");
+                Debug.Log($"Card value: {val}, card suit: {suitTexts[i].text}");
             }
         }
 

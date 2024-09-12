@@ -57,12 +57,13 @@ public class Scoring
     public List<PokerCard> GetScoredCards(PossiblePokerHand playedPokerHand, List<PokerCard> playedHand)
     {
         List<PokerCard> scoredCards = new List<PokerCard>();
-        if (playedPokerHand.amountOfCardsItScores == 5) {scoredCards = playedHand;}
+        if (playedPokerHand.amountOfCardsItScores == 5) {scoredCards = playedHand; Debug.Log("Scored 5");}
         else
         {
             for(int i = 0; i < playedPokerHand.indexesOfScoredCardsWhenLessThanFive.Count; i++)
             {
                 scoredCards.Add(playedHand[playedPokerHand.indexesOfScoredCardsWhenLessThanFive[i]]);
+                Debug.Log("aaa: " + scoredCards[i]);
             }
         }
         return scoredCards;

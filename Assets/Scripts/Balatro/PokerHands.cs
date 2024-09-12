@@ -186,8 +186,7 @@ public class FourOfAKind : PossiblePokerHand
     {
         base.IsThisHand(playedHand); 
         if (firstElementCount == 4) 
-        {
-            
+        {   
             return this;
         } 
         else return null;
