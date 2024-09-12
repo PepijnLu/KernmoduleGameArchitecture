@@ -7,13 +7,6 @@ BUGS:
 -SCORE KEEPS ADDING TO ITSELF WHEN SAME HAND TWICE IN A ROW
 -
 */
-public struct PokerCard
-{
-    public int rank;
-    public string suit;
-    public int chips, mult;
-}
-
 public class Balatro : MonoBehaviour
 {
     //TESTING PURPOSES
@@ -24,6 +17,7 @@ public class Balatro : MonoBehaviour
     public List<PokerCard> playedHand = new List<PokerCard>();
     public TextMeshProUGUI handText, scoreText;
     public Scoring scoring = new Scoring();
+    public CardsHandout cardsHandout;
     int totalScore;
 
 
@@ -47,14 +41,7 @@ public class Balatro : MonoBehaviour
 
     public void InitializePlayedHand(int rank, string suit)
     {
-        PokerCard newCard = new PokerCard();
-        newCard.rank = rank;
-        newCard.suit = suit;
-        
-        if(rank == 14) {newCard.chips = 11;}
-        else if(rank > 10) {newCard.chips = 10;}
-        else {newCard.chips = rank;}
-
+        PokerCard newCard = new PokerCard(rank, suit, cardsHandout);
         playedHand.Add(newCard);
         Debug.Log($"Card submitted: {newCard.rank} of {newCard.suit}");
     }

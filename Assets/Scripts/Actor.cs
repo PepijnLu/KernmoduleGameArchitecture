@@ -25,7 +25,7 @@ public class Actor : Observer, IInitializable
             newObj.transform.position = position;
             Debug.Log("I'm " + prefabName);
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             Debug.Log("prefab not found");
         }
