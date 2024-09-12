@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PokerCard : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PokerCard : MonoBehaviour
     public int chips, mult;
     public PokerCard scriptRef;
     public Sprite sprite;
+    public Image image;
 
     private CardsHandout drawer;
 
@@ -28,14 +30,15 @@ public class PokerCard : MonoBehaviour
         rank = _rank;
         suit = _suit;
         sprite = _sprite;
+        image = GetComponent<Image>();
 
         if(rank == 14) {chips = 11;}
         else if(rank > 10) {chips = 10;}
         else {chips = rank;}
     }
 
-    void OnMouseDown()
+    public void Select()
     {
-        drawer.SelectCard(this);
+        CardsHandout.instance.SelectCard(this);
     }
 }
