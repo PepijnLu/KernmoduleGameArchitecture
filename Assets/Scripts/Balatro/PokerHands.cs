@@ -1,8 +1,6 @@
 using System;
 using System.Linq;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class PossiblePokerHand
 {
@@ -53,7 +51,6 @@ public class PossiblePokerHand
         {
             Array.Sort(values);
 
-            // Special case for Ace-low straights (Ace, 2, 3, 4, 5)
             if (values.SequenceEqual(new List<int> { 2, 3, 4, 5, 14 })) {return true;}
 
             for (int i = 0; i < values.Length - 1; i++)
@@ -121,7 +118,6 @@ public class FlushFive : PossiblePokerHand
 
 }
 
-
 public class FlushHouse : PossiblePokerHand
 {
     public FlushHouse(string name, int chips, int mult, int amountOfCardsItScores) : base(name, chips, mult, amountOfCardsItScores) {}
@@ -134,7 +130,6 @@ public class FlushHouse : PossiblePokerHand
     }
 
 }
-
 
 public class FiveOfAKind : PossiblePokerHand
 {
@@ -149,7 +144,6 @@ public class FiveOfAKind : PossiblePokerHand
 
 }
 
-
 public class RoyalFlush : PossiblePokerHand
 {
     public RoyalFlush(string name, int chips, int mult, int amountOfCardsItScores) : base(name, chips, mult, amountOfCardsItScores) {}
@@ -163,7 +157,6 @@ public class RoyalFlush : PossiblePokerHand
 
 }
 
-
 public class StraightFlush : PossiblePokerHand
 {
     public StraightFlush(string name, int chips, int mult, int amountOfCardsItScores) : base(name, chips, mult, amountOfCardsItScores) {}
@@ -176,7 +169,6 @@ public class StraightFlush : PossiblePokerHand
     }
 
 }
-
 
 public class FourOfAKind : PossiblePokerHand
 {
@@ -193,7 +185,6 @@ public class FourOfAKind : PossiblePokerHand
     }
 
 }
-
 
 public class FullHouse : PossiblePokerHand
 {
@@ -221,7 +212,6 @@ public class Flush : PossiblePokerHand
 
 }
 
-
 public class Straight : PossiblePokerHand
 {
     public Straight(string name, int chips, int mult, int amountOfCardsItScores) : base(name, chips, mult, amountOfCardsItScores) {}
@@ -234,7 +224,6 @@ public class Straight : PossiblePokerHand
     }
 
 }
-
 
 public class ThreeOfAKind : PossiblePokerHand
 {
@@ -259,7 +248,6 @@ public class ThreeOfAKind : PossiblePokerHand
 
 }
 
-
 public class TwoPair : PossiblePokerHand
 {
     public TwoPair(string name, int chips, int mult, int amountOfCardsItScores) : base(name, chips, mult, amountOfCardsItScores) {}
@@ -282,7 +270,6 @@ public class TwoPair : PossiblePokerHand
     }
 
 }
-
 
 public class OnePair : PossiblePokerHand
 {
@@ -316,6 +303,5 @@ public class HighCard : PossiblePokerHand
         indexesOfScoredCardsWhenLessThanFive.Add(0);
         return this;
     }
-
 }
 

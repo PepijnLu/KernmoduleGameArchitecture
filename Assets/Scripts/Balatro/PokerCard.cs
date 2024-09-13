@@ -1,29 +1,15 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PokerCard : MonoBehaviour
 {
+    public Sprite sprite;
+    public Image image;
+    
     public int rank;
     public string suit;
     public int chips, mult;
-    public PokerCard scriptRef;
-    public Sprite sprite;
-    public Image image;
-
-    private CardsHandout drawer;
-
-    public PokerCard(int rank, string suit, CardsHandout drawer)
-    {
-        // this.rank = rank;
-        // this.suit = suit;
-        // this.drawer = drawer;
-        // scriptRef = this;
-
-        // if(rank == 14) {chips = 11;}
-        // else if(rank > 10) {chips = 10;}
-        // else {chips = rank;}
-    }
+    public bool isInHand;
 
     public void SetValues(int _rank, string _suit, Sprite _sprite)
     {
@@ -37,7 +23,7 @@ public class PokerCard : MonoBehaviour
         else {chips = rank;}
     }
 
-    public void Select()
+    public void Select() // Attached to the button component
     {
         CardsHandout.instance.SelectCard(this);
     }
